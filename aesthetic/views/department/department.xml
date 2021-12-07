@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="department_via_kanban" model="ir.ui.view">
+        <field name="name">aesthetic.department.kanban</field>
+        <field name="model">aesthetic.department</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="department_name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class = "oe_kanban_global_click">
+                            <div class = "oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name : <field name="department_name"/>
+                                    </li>
+                                    <li>
+                                        Manager is : <field name="manager_name"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="department_search" model="ir.ui.view">
+        <field name="name">aesthetic.department.search</field>
+        <field name="model">aesthetic.department</field>
+        <field name="arch" type="xml">
+            <search string="Department">
+                <field name="department_name"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <record id="department_form" model="ir.ui.view">
+        <field name="name">aesthetic.department.form</field>
+        <field name="model">aesthetic.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="unic_department_name" redonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="department_name"/>
+                            <field name="about_department"/>
+                        </group>
+                        <group>
+                            <field name="manager_name"/>
+                            <field name="age"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="department_orders" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">aesthetic.department</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first Department!!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="department_menu_root"
+        name="Departments"
+        parent="aesthetic_menu_root"
+        sequence="20"/>
+
+    <menuitem id="department_menu"
+              name="Departments"
+              parent="department_menu_root"
+              action="department_orders"
+              sequence="20"/>
+
+</odoo>

@@ -1,0 +1,30 @@
+{
+    'name': 'Aesthetic',
+    'version': '0.1',
+    'author': 'Erik Aesthetic',
+    'summary': 'Aesthetic test module',
+    'sequence': 10,
+    'description': 'Module for tests',
+    'category': 'Extra Tools',
+    'website': '',
+    'license': 'LGPL-3',
+    'depends': [
+        'sale',
+        'mail',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/data.xml',
+        'views/employee/employee.xml',
+        'views/employee/managers_view.xml',
+        'views/employee/male_view.xml',
+        'views/employee/female_view.xml',
+        'views/employee/female_view.xml',
+        'views/employee/sale.xml',
+        'views/department/department.xml'
+    ],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

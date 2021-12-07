@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="employee_view_tree" model="ir.ui.view">
+        <field name="name">aesthetic.employee.tree</field>
+        <field name="model">aesthetic.employee</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <field name="employee_ref" optional="show"/>
+                <field name="employee_name" optional="show"/>
+                <field name="employee_surname" optional="hide"/>
+                <field name="manager_name_id" optional="hide"/>
+                <field name="employee_personal_id" optional="hide"/>
+                <field name="employee_gender" optional="show"/>
+                <field name="employee_age" optional="hide"/>
+                <field name="image" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_vie_kanban" model="ir.ui.view">
+        <field name="name">aesthetic.employee.kanban</field>
+        <field name="model">aesthetic.employee</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="employee_name"/>
+                <field name="employee_surname"/>
+                <field name="employee_personal_id"/>
+                <field name="employee_gender"/>
+                <field name="employee_age"/>
+                <field name="image" widget="image" class="oe_avatar"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class = "oe_kanban_global_click">
+                            <div class = "oe_kanban_details">
+                                <field name="image" widget="image" class="oe_avatar" style="height :150px; width : 150px"/>
+                                <ul>
+                                    <li>
+                                        Name : <field name="employee_name"/>
+                                    </li>
+                                    <li>
+                                        Surname : <field name="employee_surname"/>
+                                    </li>
+                                    <li>
+                                        Gender : <field name="employee_gender"/>
+                                    </li>
+                                    <li>
+                                        Age : <field name="employee_age"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="aestheticemployeesearch" model="ir.ui.view">
+        <field name="name">aesthetic.employee.search</field>
+        <field name="model">aesthetic.employee</field>
+        <field name="arch" type="xml">
+            <search string="Employees">
+                <field name="employee_name"/>
+                <field name="employee_surname"/>
+                <separator/>
+                <filter string="Male" name='male' domain="[('employee_gender', '=', 'Male')]"/>
+                <filter string="Female" name='female' domain="[('employee_gender', '=', 'Female')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="employee_form" model="ir.ui.view">
+        <field name="name">aesthetic.employee.form</field>
+        <field name="model">aesthetic.employee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar" />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="employee_ref" redonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_name"/>
+                            <field name="employee_surname"/>
+                            <field name="manager_name_id" invisible="context.get('hide_manager')"/>
+                        </group>
+                        <group>
+                            <field name="employee_personal_id"/>
+                            <field name="employee_gender" invisible="context.get('hide_gender')"/>
+                        </group>
+                        <group>
+                            <field name="employee_age"/>
+                            <filed name="about_employee"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="ToDo" name = "employee_todo" >
+                            <group>
+                                <field name="need_to_do"/>
+                            </group>
+                        </page>
+                        <page string="Other" name = "employee_other_info" >
+                            <group>
+                                <field name="employee_other_info"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_orders" model="ir.actions.act_window">
+        <field name="name">Aesthetic Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">aesthetic.employee</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first employee!!!!
+            </p>
+        </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem 
+        id="aesthetic_menu_root"
+        name="Aesthetic"
+        sequence="10"/>
+
+    <menuitem id="employee_menu_root"
+        name="Employees"
+        parent="aesthetic_menu_root"
+        sequence="10"/>
+
+    <menuitem id="employee_menu"
+        name="All"
+        parent="employee_menu_root"
+        action="employee_orders"
+        sequence="10"/>
+
+</odoo>

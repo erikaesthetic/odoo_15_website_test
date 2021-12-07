@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aesthetic_employee,access.aesthetic.employee,model_aesthetic_employee,,1,1,1,1
+access_aesthetic_department,access.aesthetic.department,model_aesthetic_department,,1,1,1,1

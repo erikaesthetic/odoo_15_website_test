@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_employee_managers" model="ir.actions.act_window">
+        <field name="name">Aesthetic Managers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">aesthetic.employee</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'hide_manager' : 1}</field>
+        <field name="domain">[('employee_age', '&lt;=', '30'),('employee_gender', '=', 'male') ]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first Manager!!!!
+            </p>
+        </field>
+    </record>
+    <menuitem id="manager_menu"
+              name="Managers"
+              parent="employee_menu_root"
+              action="action_employee_managers"
+              sequence="20"/>
+</odoo>
