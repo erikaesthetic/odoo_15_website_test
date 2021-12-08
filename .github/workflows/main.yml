@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
           
       - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: root
           server: 178.62.102.194
