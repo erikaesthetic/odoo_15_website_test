@@ -26,7 +26,7 @@ jobs:
           username: root
           server: 178.62.102.194
           port: 22 # default is 22
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          kssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
  
           
           # will put all file under this path
