@@ -10,7 +10,7 @@ jobs:
       - name: deploy file
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          username: root
+          username: 'root'
           server: 178.62.102.194
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           local_path: './*'
