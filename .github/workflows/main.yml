@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        uses: shimataro/ssh-key-action@v2
         with:
           username: 'root'
           server: 178.62.102.194
