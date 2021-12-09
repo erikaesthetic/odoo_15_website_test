@@ -13,9 +13,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          
           script: |
             cd /odoo/custom/odoo_15_website_test/
             git pull
-		  shell: | 
-	  	  	service odoo-server restart
+			echo "name"
