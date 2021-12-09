@@ -21,7 +21,8 @@
         'views/employee/female_view.xml',
         'views/employee/female_view.xml',
         'views/employee/sale.xml',
-        'views/department/department.xml'
+        'views/department/department.xml',
+        'views/web/main_page.xml'
     ],
     'demo': [],
     'installable': True,
