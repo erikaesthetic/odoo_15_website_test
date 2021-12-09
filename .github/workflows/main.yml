@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy test
+      - name: Deploy To The Server 
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
@@ -15,7 +15,6 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           
           script: |
-            cd test_1
-            cd  autodeploytest
+            cd /odoo/custom/odoo_15_website_test/
             git pull
-            echo "Deployment is ok"
+            echo "Success"
