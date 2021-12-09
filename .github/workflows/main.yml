@@ -16,4 +16,4 @@ jobs:
           script: |
             cd /odoo/custom/odoo_15_website_test/
             git pull
-            service odoo-service restart
+            service odoo-server restart
